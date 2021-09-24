@@ -1,5 +1,7 @@
 import socket
 
+# For testing the raspberry pi API
+
 HOST = "192.168.0.3" # IP address of your Raspberry PI
 PORT = 65432          # The port used by the server
 

@@ -1,1 +1,0 @@
-# Bluetooth code that communicates with the Raspberry Pi
