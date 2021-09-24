@@ -1,7 +1,7 @@
 
 import bluetooth
 
-host = "DC:A6:32:80:7D:87" # The address of Raspberry PI Bluetooth adapter on the server.
+host = "DC:A6:32:73:03:91" # The address of Raspberry PI Bluetooth adapter on the server.
 port = 1
 sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 sock.connect((host, port))

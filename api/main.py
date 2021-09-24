@@ -5,12 +5,12 @@ import bluetooth
 
 app = FastAPI()
 
-HOST_MAC_ADDRESS = "DC:A6:32:80:7D:87"
+HOST_MAC_ADDRESS = "DC:A6:32:73:03:91"
 BT_PORT = 0
 BACKLOG = 1
 SIZE = 1024
 
-WIFI_HOST = "192.168.3.49"
+WIFI_HOST = "192.168.0.3"
 WIFI_PORT = 65432
 
 @app.get("/")
