@@ -5,14 +5,16 @@ import socket
 import bluetooth
 
 # Change these to your specific Mac and IP
-MAC = "DC:A6:32:73:03:91"
-HOST = "192.168.3.49" # IP address of your Raspberry PI
+MAC = "DC:A6:32:73:03:91" # MAC address of your Raspberry Pi
+HOST = "192.168.0.3" # IP address of your Raspberry Pi
 
 SOCKET_PORT = 65432 # Port to listen on (non-privileged ports are > 1023)
 BT_PORT = 0 # Bluetooth Port
 backlog = 1
 size = 1024
 
+
+'''Connect over HTTP'''
 app = Flask(__name__)
 greeting = " "
 
@@ -33,7 +35,7 @@ def index():
     return jsonify(server_greet = greeting)
 
 '''Connect over Bluetooth'''
-# Adapted from https://github.com/mccaesar/iot-labs/blob/master/iot-lab-2/frontend_tutorial/bt_server.py
+# Adapted from https://github.com/mccaesar/iot-labs/blob/master/iot-lab-2/fron>
 def bluetooth():
     s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
     s.bind((MAC, BT_PORT))
@@ -53,7 +55,7 @@ def bluetooth():
         s.close()
 
 '''Connect with a raw TCP socket'''
-# Adapted from: https://github.com/mccaesar/iot-labs/blob/master/iot-lab-2/frontend_tutorial/wifi_server.py
+# Adapted from: https://github.com/mccaesar/iot-labs/blob/master/iot-lab-2/fro>
 def raw_socket():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((HOST, SOCKET_PORT))
@@ -63,7 +65,7 @@ def raw_socket():
             while 1:
                 client, clientInfo = s.accept()
                 print("server recv from: ", clientInfo)
-                data = client.recv(1024)      # receive 1024 Bytes of message in binary format
+                data = client.recv(1024)      # receive 1024 Bytes of message >
                 if data != b"":
                     print(data)     
                     client.sendall(data) # Echo back to client
@@ -75,22 +77,24 @@ def raw_socket():
 def websocket():
     return print("TODO, write websocket server")
 
-
 def main():
-    selection = input("Select how you want to establish the connection: ")
-    print("1. HTTP Connection")
-    print("2. Bluetooth Connection")
-    print("3. Raw TCP Socket Connection")
-    print("4. Websocket Connection")
+    selection = input("Select how you want to establish the connection:\n"
+    "1. HTTP Connection\n"
+    "2. Bluetooth Connection\n"
+    "3. Raw TCP Socket Connection\n"
+    "4. Websocket Connection\n")
 
-    if selection == 1:
+    if selection == '1':
         app.run( host='192.168.0.3', port = 5000, debug=True)
-    elif selection == 2:
+    elif selection == '2':
         bluetooth()
-    elif selection == 3:
+    elif selection == '3':
         raw_socket()
-    else: 
+    elif selection == '4':
         websocket()
+    else:
+        print("Please select a valid option")
 
 if __name__ == '__main__':
     main()
+
