@@ -34,7 +34,17 @@ function client(){
 function sendKeystroke(e) {
     console.log(e)
     fetch(`http://${server_addr}:8080/${e}`)
+    .then(res => res.json())
+    .then((data) => {
+        console.log(data)
+        document.getElementById('temperature').innerHTML = data
+    })
+    .catch((err) => {
+        console.log(err)
+        document.getElementById('temperature').innerHTML = 0
+    })
   }
+
 
 // for detecting which key is been pressed w,a,s,d
 function updateKey(e) {
