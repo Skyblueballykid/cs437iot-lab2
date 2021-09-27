@@ -1,15 +1,8 @@
-# REST API using FastAPI and Uvicorn
+### app.py is a REST API using Flask to control the PiCar
 
-https://github.com/tiangolo/fastapi
+### main.py implements:
 
-## Install
-```bash
-pip3 install fastapi
-
-pip3 install uvicorn
-```
-
-## Run the server
-```bash
-uvicorn main:app --reload
-```
+1. REST API
+2. Bluetooth
+3. Raw TCP Socket server
+4. Websockets

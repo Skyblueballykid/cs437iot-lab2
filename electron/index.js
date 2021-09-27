@@ -2,7 +2,7 @@ document.onkeydown = updateKey;
 document.onkeyup = resetKey;
 
 var server_port = 8080;
-var server_addr = "localhost";   // the IP address of your Raspberry PI
+var server_addr = "192.168.0.3";   // the IP address of your Raspberry PI
 
 function client(){
     
@@ -33,7 +33,7 @@ function client(){
 // Capture the keystroke and send it to the Pi API
 function sendKeystroke(e) {
     console.log(e)
-    fetch(`http:localhost:8080/${e}`)
+    fetch(`http://${server_addr}:8080/${e}`)
   }
 
 // for detecting which key is been pressed w,a,s,d
