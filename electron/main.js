@@ -2,6 +2,11 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 
+// Add electron-reloader to get hot reloading
+try {
+  require('electron-reloader')(module);
+} catch {}
+
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
