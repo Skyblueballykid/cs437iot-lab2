@@ -3,6 +3,7 @@ from flask import render_template
 from flask import request, jsonify
 import socket
 import bluetooth
+import time
 
 # Change these to your specific Mac and IP
 MAC = "DC:A6:32:73:03:91" # MAC address of your Raspberry Pi
@@ -79,7 +80,7 @@ def websocket():
 
 def main():
     selection = input("Select how you want to establish the connection:\n"
-    "1. HTTP Connection\n"
+    "1. HTTP Connection (hit 1 twice)\n"
     "2. Bluetooth Connection\n"
     "3. Raw TCP Socket Connection\n"
     "4. Websocket Connection\n")
