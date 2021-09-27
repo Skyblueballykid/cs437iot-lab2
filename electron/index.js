@@ -37,7 +37,7 @@ function sendKeystroke(e) {
     .then(res => res.json())
     .then((data) => {
         console.log(data)
-        document.getElementById('temperature').innerHTML = data
+        document.getElementById('temperature').innerHTML = `${data} &deg;C`
     })
     .catch((err) => {
         console.log(err)
