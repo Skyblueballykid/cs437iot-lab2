@@ -1,8 +1,8 @@
 from flask import Flask
 from flask import render_template
 from flask import request, jsonify
-from gpiozero import CPUTemperature
-import picar_4wd as fc
+# from gpiozero import CPUTemperature
+# import picar_4wd as fc
 
 '''Implementation of keystroke API using url params'''
 
@@ -32,8 +32,23 @@ def index(keystroke):
 
     return f'{temp}' 
 
+@app.route('/', methods=["POST"])
+def post():
+    data = request.get_json()
+    print(data['msg'])
+    #TODO: Do something with the data on the PI here 
+    res = {'status': 'ok'}
+    return jsonify(res)
+
+
 def main():
-    app.run(host='192.168.0.3', port = 8080, debug=True)
+    count = 0 
+    if count < 1:
+        host = input("Enter the IP address of your PI or `localhost` for local development: ")
+        count += 1
+        app.run(host=host, port = 8080, debug=True)
+
+    
 
 if __name__ == '__main__':
     main()

@@ -2,7 +2,7 @@ document.onkeydown = updateKey;
 document.onkeyup = resetKey;
 
 var server_port = 8080;
-var server_addr = "192.168.0.3";   // the IP address of your Raspberry PI
+var server_addr = "localhost";   // the IP address of your Raspberry PI
 
 function client(){
     
@@ -44,6 +44,26 @@ function sendKeystroke(e) {
         document.getElementById('temperature').innerHTML = 0
     })
   }
+
+// Send a post request with the message to the Pi
+function sendMessage(msg) {
+    msg = document.getElementById("message").value;
+    console.log(msg)
+    fetch(`http://${server_addr}:8080/`, {
+        method: "post",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+          //make sure to serialize your JSON body
+        body: JSON.stringify({
+            msg: msg
+        })
+        })
+        .then( (response) => { 
+        return response
+        })   
+    }
 
 
 // for detecting which key is been pressed w,a,s,d
