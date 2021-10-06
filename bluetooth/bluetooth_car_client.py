@@ -17,13 +17,12 @@ def main():
     sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
     sock.connect((host, port))
     while True:
-        text = input("Enter command for car:")
-        if text == "quit":
+        text = input("Enter f=forward b=back r=right l=left s=stop q=quit : ")
+        if text == "q":
             break
         sock.send(text)
         car_telemetry = sock.recv(1024).decode()
-        print("telemetry received from car: ", car_telemetry)
-        print("writing telemetry: ", car_telemetry)
+        print(f"writing telemetry received from car: {car_telemetry}\n")
         write_file(car_telemetry, args.telemetry_file)
     sock.close()
 
@@ -38,7 +37,7 @@ if __name__ == "__main__":
         default="B8:27:EB:FD:5D:88",
     )
     parser.add_argument(
-        "--port", type=str, required=False, help="bluetooth address", default=1
+        "--port", type=int, required=False, help="bluetooth address", default=1
     )
     parser.add_argument(
         "--telemetry-file",
