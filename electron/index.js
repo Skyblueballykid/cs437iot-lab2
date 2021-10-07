@@ -91,6 +91,11 @@ function updateKey(e) {
         document.getElementById("rightArrow").style.color = "green";
         send_data("68");
     }
+    else if (e.keyCode == '88') {
+        // stop (x)
+        document.getElementById("stopCircle").style.color = "green";
+        send_data("68");
+    }
 }
 
 // reset the key to the start state 
@@ -102,6 +107,7 @@ function resetKey(e) {
     document.getElementById("downArrow").style.color = "grey";
     document.getElementById("leftArrow").style.color = "grey";
     document.getElementById("rightArrow").style.color = "grey";
+    document.getElementById("stopCircle").style.color = "grey";
 }
 
 

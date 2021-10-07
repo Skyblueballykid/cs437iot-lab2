@@ -26,6 +26,9 @@ def index(keystroke):
     elif keystroke == '68':
         print("Turning right")
         fc.turn_right(power_val)
+    elif keystroke == '88':
+        print("Stopping vehicle")
+        fc.stop()    
     else:
         print("Enter a valid direction")
         fc.stop()
