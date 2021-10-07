@@ -2,7 +2,7 @@ import socket
 
 # For testing the raspberry pi API
 
-HOST = "192.168.0.3" # IP address of your Raspberry PI
+HOST = "192.168.1.23" # IP address of your Raspberry PI
 PORT = 65432         # The port used by the server
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:

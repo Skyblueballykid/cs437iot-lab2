@@ -1,8 +1,8 @@
 document.onkeydown = updateKey;
 document.onkeyup = resetKey;
 
-var server_port = 8080;
-var server_addr = "localhost";   // the IP address of your Raspberry PI
+var server_port = 65432;
+var server_addr = "192.168.1.23";   // the IP address of your Raspberry PI
 
 function client(){
     
