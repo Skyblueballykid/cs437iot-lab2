@@ -8,7 +8,7 @@ from websockets import serve
 
 # Change these to your specific Mac and IP
 MAC = "DC:A6:32:73:03:91" # MAC address of your Raspberry Pi
-HOST = "192.168.0.3" # IP address of your Raspberry Pi
+HOST = "192.168.1.23" # IP address of your Raspberry Pi
 
 SOCKET_PORT = 65432 # Port to listen on (non-privileged ports are > 1023)
 BT_PORT = 0 # Bluetooth Port
