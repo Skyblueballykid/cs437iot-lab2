@@ -1,8 +1,8 @@
 from flask import Flask
 from flask import render_template
 from flask import request, jsonify
-# from gpiozero import CPUTemperature
-# import picar_4wd as fc
+from gpiozero import CPUTemperature
+import picar_4wd as fc
 
 '''Implementation of keystroke API using url params'''
 
@@ -14,26 +14,32 @@ power_val = 50
 def index(keystroke):
     cpu_temp = CPUTemperature()
     temp = cpu_temp.temperature
+    direction = "None"
     if keystroke == '87':
         print("Moving forward")
         fc.forward(power_val)
+        direction = "Forward"
     elif keystroke == '83':
         print("Moving backward")
         fc.backward(power_val)
+        direction = "Reverse"
     elif keystroke == '65':
         print("Turning left")
         fc.turn_left(power_val)
+        direction = "Left"
     elif keystroke == '68':
         print("Turning right")
         fc.turn_right(power_val)
+        direction = "Right"
     elif keystroke == '88':
         print("Stopping vehicle")
-        fc.stop()    
+        fc.stop()
+        direction = "None"
     else:
         print("Enter a valid direction")
         fc.stop()
-
-    return f'{temp}' 
+    data = [temp, direction]
+    return jsonify(data)
 
 @app.route('/', methods=["POST"])
 def post():
@@ -49,7 +55,7 @@ def main():
     if count < 1:
         host = input("Enter the IP address of your PI or `localhost` for local development: ")
         count += 1
-        app.run(host=host, port = 8080, debug=True)
+        app.run(host=host, port = 8080, debug=False)
 
     
 
